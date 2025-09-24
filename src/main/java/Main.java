@@ -1,3 +1,4 @@
+import Controller.HelloController;
 import Controller.MensalistaController;
 import io.javalin.Javalin;
 
@@ -12,9 +13,8 @@ public class Main {
 
         //RUBRICA 1
 
-        app.get("/hello",ctx -> {
-            ctx.result("Hello, Javalin!");
-        });
+        app.get("/hello", HelloController::handleHello);
+
         app.get("/status", ctx -> {
             String timestamp = Instant.now().toString();
             Map<String, String> response = Map.of(
